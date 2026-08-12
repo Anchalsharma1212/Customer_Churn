@@ -164,7 +164,7 @@ with col3:
 
 
 # -------------------------------------------------
-# Service Information
+# Service Informations
 # -------------------------------------------------
 
 st.markdown(
@@ -279,15 +279,27 @@ with col2:
         min_value=0.0,
         value=0.0
     )
-
-
 # -------------------------------------------------
-# Prediction
+# Prediction & Reset
 # -------------------------------------------------
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-if st.button("🔮 Predict Churn"):
+col1, col2 = st.columns(2)
+
+with col1:
+    predict_button = st.button("🔮 Predict Churn")
+
+with col2:
+    reset_button = st.button("🔄 Reset")
+
+
+if reset_button:
+    st.session_state.clear()
+    st.rerun()
+
+
+if predict_button:
 
     data = {
         "gender": gender,
